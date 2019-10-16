@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+
+        Add new Post
+    </h1>
+    <form action="/post" method="POST">
+        <input type="text" placeholder="name" name="name">
+        <textarea name="post" cols="30" rows="10"></textarea>
+        <input type="submit" value="post">
+    </form>
+    <% for (var x of arr) { %>
+        <h2>Post:-</h2>
+    <div style="margin-left: 10px; border: 1px blue solid; padding: 0px 0px 10px 20px;">
+        <h4><%= x.name %> </h4>
+        <h3><%=x.post %> </h3>
+        <%= x._id %>
+
+
+
+        <div style="padding: 0px 0px 15px 60px">
+            <h2>Comments:- </h2>
+            <% for (var comment of x.comments) { %>
+            <h4>Name: <%= comment.name %> </h4>
+            <h3>comment: <%= comment.comment %> </h3>
+
+            <%}%>
+
+        </div>
+
+        <form action="/comment/<%= x._id %>" method="POST">
+            
+            <input type="text" placeholder="name" name="name">
+            <textarea name="comment" cols="30" rows="10"></textarea>
+            <input type="submit" value="comment">
+
+
+
+        </form>
+    </div>
+        <%}%>
+</body>
+
+</html>
